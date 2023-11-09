@@ -1,11 +1,12 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const logInUser = async (req, res) => {
+const doctorLogin = async (req, res) => {
   try {
     const userData = req.body;
+    // console.log(userData, "userData");
 
     let { data, error } = await supabase
-      .from("customers")
+      .from("doctors")
       .select("*")
 
       // Filters
@@ -15,11 +16,11 @@ const logInUser = async (req, res) => {
     if (error) {
       res.status(500).json({ message: error.message });
     } else {
-      res.status(200).json({ data: data });
+        res.status(200).json({ data : data });
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-module.exports = logInUser;
+module.exports = doctorLogin;

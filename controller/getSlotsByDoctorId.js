@@ -1,16 +1,15 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const logInUser = async (req, res) => {
+const getSlotsByDoctorId = async (req, res) => {
   try {
+    const id = req.params.id
     const userData = req.body;
 
     let { data, error } = await supabase
-      .from("customers")
-      .select("*")
-
-      // Filters
-      .eq("email", userData.email)
-      .eq("password", userData.password)
+      .from("slots")
+      .select('*, customers(*), pets(*, animals(*)), doctors(*)')
+      .eq('doctorId', id)
+      ;
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -22,4 +21,4 @@ const logInUser = async (req, res) => {
   }
 };
 
-module.exports = logInUser;
+module.exports = getSlotsByDoctorId;

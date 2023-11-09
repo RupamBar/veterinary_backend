@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const signUp = require('../controller/signUp');
+const signUpDoctor = require('../controller/signUpDoctor');
 const logInUser = require("../controller/logInUser");
 const getLoggedInUser = require('../controller/getLoggedInUser');
 const signOutUser = require('../controller/signOutUser');
@@ -57,9 +58,13 @@ const deleteMedicine = require('../controller/deleteMedicine');
 // prescriptions
 const getAllPrescriptions = require('../controller/getAllPrescriptions');
 
+// doctor functionality
+const doctorLogin = require('../controller/doctorLogin');
+const getSlotsByDoctorId = require('../controller/getSlotsByDoctorId');
 
 
 router.route("/signUp").post(signUp);
+router.route("/signUpDoctor").post(signUpDoctor);
 router.route("/logIn").post(logInUser);
 router.route("/getLoggedInUser").get(getLoggedInUser);
 router.route("/signOutUser").get(signOutUser);
@@ -115,6 +120,11 @@ router.route("/updateMedicine").put(updateMedicine);
 router.route("/deleteMedicine/:id").delete(deleteMedicine);
 
 router.route("/getAllPrescriptions").get(getAllPrescriptions);
+
+
+router.route("/doctorLogin").post(doctorLogin)
+router.route("/getSlotsByDoctorId/:id").get(getSlotsByDoctorId);
+
 
 
 module.exports = router;
