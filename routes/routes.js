@@ -20,6 +20,7 @@ const getAllDoctors = require('../controller/getAllDoctors');
 const getDoctorById = require('../controller/getDoctorById');
 const updateDoctor = require('../controller/updateDoctor');
 const deleteDoctor = require('../controller/deleteDoctor');
+const doctorLogin = require('../controller/doctorLogin');
 // Employee
 const getEmployeeByEmail = require('../controller/getEmployeeByEmail');
 const addEmployee = require('../controller/addEmployee');
@@ -57,10 +58,15 @@ const updateMedicine = require('../controller/updateMedicine');
 const deleteMedicine = require('../controller/deleteMedicine');
 // prescriptions
 const getAllPrescriptions = require('../controller/getAllPrescriptions');
+const addPrescription = require('../controller/addPrescription');
+const getPrescriptionsByDoctorId = require('../controller/getPrescriptionsByDoctorId');
+const getPrescriptionById = require('../controller/getPrescriptionById');
+const updatePrescription = require('../controller/updatePrescription');
+const deletePrescription = require('../controller/deletePrescription');
 
-// doctor functionality
-const doctorLogin = require('../controller/doctorLogin');
+//slots
 const getSlotsByDoctorId = require('../controller/getSlotsByDoctorId');
+const updateSlot = require('../controller/updateSlot');
 
 
 router.route("/signUp").post(signUp);
@@ -83,6 +89,7 @@ router.route("/getAllDoctors").get(getAllDoctors);
 router.route("/getDoctorById/:id").get(getDoctorById);
 router.route("/updateDoctor").put(updateDoctor);
 router.route("/deleteDoctor/:id").delete(deleteDoctor);
+router.route("/doctorLogin").post(doctorLogin)
 
 router.route("/getEmployeeByEmail/:email").get(getEmployeeByEmail);
 router.route("/addEmployee").post(addEmployee);
@@ -120,10 +127,16 @@ router.route("/updateMedicine").put(updateMedicine);
 router.route("/deleteMedicine/:id").delete(deleteMedicine);
 
 router.route("/getAllPrescriptions").get(getAllPrescriptions);
+router.route("/addPrescription").post(addPrescription);
+router.route("/getPrescriptionsByDoctorId/:id").get(getPrescriptionsByDoctorId);
+router.route("/getPrescriptionById/:id").get(getPrescriptionById);
+router.route("/updatePrescription").put(updatePrescription);
+router.route("/deletePrescription/:id").delete(deletePrescription);
 
-
-router.route("/doctorLogin").post(doctorLogin)
 router.route("/getSlotsByDoctorId/:id").get(getSlotsByDoctorId);
+router.route("/updateSlot").put(updateSlot);
+
+
 
 
 
