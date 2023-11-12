@@ -6,7 +6,7 @@ const getAllPrescriptions = async (req, res) => {
 
     let { data, error } = await supabase
       .from("prescriptions")
-      .select('*, customers(*), animals(*), slots(*), doctors(*)')
+      .select('*, customers(*), pets(*, animals(*)), slots(*), doctors(*)')
       ;
 
     if (error) {

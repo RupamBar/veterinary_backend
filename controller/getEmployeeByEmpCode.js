@@ -1,13 +1,16 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const getAllAssets = async (req, res) => {
+const getEmployeeByEmpCode = async (req, res) => {
   try {
+    const empCode = req.params.empCode;
     const userData = req.body;
 
     let { data, error } = await supabase
-      .from("assets")
+      .from("employees")
       .select("*")
-      .gt('count', 0);
+
+      // Filters
+      .eq("empCode", empCode)
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -19,4 +22,4 @@ const getAllAssets = async (req, res) => {
   }
 };
 
-module.exports = getAllAssets;
+module.exports = getEmployeeByEmpCode;

@@ -1,13 +1,16 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const getAllAssets = async (req, res) => {
+const getAllPendingSlotsForGroom = async (req, res) => {
   try {
+    const id = req.params.id
     const userData = req.body;
 
     let { data, error } = await supabase
-      .from("assets")
-      .select("*")
-      .gt('count', 0);
+      .from("slots")
+      .select('*, customers(*), pets(*, animals(*)), doctors(*)')
+      .eq('checkUpType', 'Groom')
+      .eq('checkedUp', false)
+      ;
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -19,4 +22,4 @@ const getAllAssets = async (req, res) => {
   }
 };
 
-module.exports = getAllAssets;
+module.exports = getAllPendingSlotsForGroom;

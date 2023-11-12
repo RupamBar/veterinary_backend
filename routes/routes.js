@@ -28,6 +28,9 @@ const getAllEmployees = require('../controller/getAllEmployees');
 const getEmployeeById = require('../controller/getEmployeeById');
 const updateEmployee = require('../controller/updateEmployee');
 const deleteEmployee = require('../controller/deleteEmployee');
+
+const verifyEmployee = require('../controller/verifyEmployee');
+const getEmployeeByEmpCode = require('../controller/getEmployeeByEmpCode');
 // Animals
 const getAnimalByN_A_S = require('../controller/getAnimalByN_A_S');
 const addAnimal = require('../controller/addAnimal');
@@ -49,6 +52,7 @@ const getAllAssets = require('../controller/getAllAssets');
 const getAssetById = require('../controller/getAssetById');
 const updateAsset = require('../controller/updateAsset');
 const deleteAsset = require('../controller/deleteAsset');
+const getAssetsByIds = require('../controller/getAssetsByIds');
 // medicines
 const getMedicineByName = require('../controller/getMedicineByName');
 const addMedicine = require('../controller/addMedicine');
@@ -67,6 +71,11 @@ const deletePrescription = require('../controller/deletePrescription');
 //slots
 const getSlotsByDoctorId = require('../controller/getSlotsByDoctorId');
 const updateSlot = require('../controller/updateSlot');
+const getAllPendingSlotsForGroom = require("../controller/getAllPendingSlotsForGroom");
+
+//groom table
+const createGroomEntry = require('../controller/createGroomEntry');
+const getGroomDataByEmpId = require('../controller/getGroomDataByEmpId');
 
 
 router.route("/signUp").post(signUp);
@@ -97,6 +106,10 @@ router.route("/getAllEmployees").get(getAllEmployees);
 router.route("/getEmployeeById/:id").get(getEmployeeById);
 router.route("/updateEmployee").put(updateEmployee);
 router.route("/deleteEmployee/:id").delete(deleteEmployee);
+router.route("/verifyEmployee").post(verifyEmployee);
+router.route("/getEmployeeByEmpCode/:empCode").get(getEmployeeByEmpCode);
+
+
 
 router.route("/getAnimalByN_A_S").post(getAnimalByN_A_S);
 router.route("/addAnimal").post(addAnimal);
@@ -119,6 +132,9 @@ router.route("/getAssetById/:id").get(getAssetById);
 router.route("/updateAsset").put(updateAsset);
 router.route("/deleteAsset/:id").delete(deleteAsset);
 
+router.route("/getAssetsByIds").post(getAssetsByIds);
+
+
 router.route("/getMedicineByName/:name").get(getMedicineByName);
 router.route("/addMedicine").post(addMedicine);
 router.route("/getAllMedicines").get(getAllMedicines);
@@ -136,6 +152,10 @@ router.route("/deletePrescription/:id").delete(deletePrescription);
 router.route("/getSlotsByDoctorId/:id").get(getSlotsByDoctorId);
 router.route("/updateSlot").put(updateSlot);
 
+router.route("/getAllPendingSlotsForGroom").get(getAllPendingSlotsForGroom);
+
+router.route("/createGroomEntry").post(createGroomEntry);
+router.route("/getGroomDataByEmpId/:id").get(getGroomDataByEmpId);
 
 
 

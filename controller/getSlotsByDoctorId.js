@@ -9,6 +9,7 @@ const getSlotsByDoctorId = async (req, res) => {
       .from("slots")
       .select('*, customers(*), pets(*, animals(*)), doctors(*)')
       .eq('doctorId', id)
+      .eq('checkUpType', 'Doctor')
       ;
 
     if (error) {
