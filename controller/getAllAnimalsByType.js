@@ -1,12 +1,15 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const getAllAssets = async (req, res) => {
+const getAllAnimalsByType = async (req, res) => {
   try {
+    const name = req.params.name;
     const userData = req.body;
 
     let { data, error } = await supabase
-      .from("assets")
-      .select("*");
+      .from("animals")
+      .select("*")
+      
+      .eq("animalType", name);
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -18,4 +21,4 @@ const getAllAssets = async (req, res) => {
   }
 };
 
-module.exports = getAllAssets;
+module.exports = getAllAnimalsByType;

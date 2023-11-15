@@ -1,12 +1,15 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const getAllAssets = async (req, res) => {
+const updateCustomerProfile = async (req, res) => {
   try {
+    const table = req.params.table;
     const userData = req.body;
 
-    let { data, error } = await supabase
-      .from("assets")
-      .select("*");
+    const { data, error } = await supabase
+      .from(table)
+      .update(userData)
+      .eq("id", userData.id)
+      .select();
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -18,4 +21,4 @@ const getAllAssets = async (req, res) => {
   }
 };
 
-module.exports = getAllAssets;
+module.exports = updateCustomerProfile;

@@ -13,6 +13,7 @@ const updateCustomer = require('../controller/updateCustomer');
 const deleteCustomer = require('../controller/deleteCustomer');
 const removeAuthCustomer = require('../controller/removeAuthCustomer');
 const getCustomerByEmail = require('../controller/getCustomerByEmail');
+const updateCustomerProfile = require('../controller/updateCustomerProfile');
 //Doctor
 const addDoctor = require('../controller/addDoctor');
 const getDoctorByEmail = require('../controller/getDoctorByEmail');
@@ -38,6 +39,9 @@ const getAllAnimals = require('../controller/getAllAnimals');
 const getAnimalById = require('../controller/getAnimalById');
 const updateAnimal = require('../controller/updateAnimal');
 const deleteAnimal = require('../controller/deleteAnimal');
+const getAllAnimalsByType = require('../controller/getAllAnimalsByType');
+const getAllAnimalsByFilter = require('../controller/getAllAnimalsByFilter');
+const searchAnimalByName = require('../controller/searchAnimalByName');
 // foods
 const getFoodByName = require('../controller/getFoodByName');
 const addFood = require('../controller/addFood');
@@ -45,6 +49,8 @@ const getAllFoods = require('../controller/getAllFoods');
 const getFoodById = require('../controller/getFoodById');
 const updateFood = require('../controller/updateFood');
 const deleteFood = require('../controller/deleteFood');
+const getAllFoodsByFilter = require('../controller/getAllFoodsByFilter');
+const searchFoodByName = require("../controller/searchFoodByName");
 //assets
 const getAssetByName = require('../controller/getAssetByName');
 const addAsset = require('../controller/addAsset');
@@ -53,6 +59,8 @@ const getAssetById = require('../controller/getAssetById');
 const updateAsset = require('../controller/updateAsset');
 const deleteAsset = require('../controller/deleteAsset');
 const getAssetsByIds = require('../controller/getAssetsByIds');
+const getAllAssetsByFilter = require('../controller/getAllAssetsByFilter');
+const searchAssetByName = require('../controller/searchAssetByName');
 // medicines
 const getMedicineByName = require('../controller/getMedicineByName');
 const addMedicine = require('../controller/addMedicine');
@@ -60,6 +68,9 @@ const getAllMedicines = require('../controller/getAllMedicines');
 const getMedicineById = require('../controller/getMedicineById');
 const updateMedicine = require('../controller/updateMedicine');
 const deleteMedicine = require('../controller/deleteMedicine');
+const getAllMedicinesByFilter = require('../controller/getAllMedicinesByFilter');
+const searchMedicineByName = require('../controller/searchMedicineByName');
+
 // prescriptions
 const getAllPrescriptions = require('../controller/getAllPrescriptions');
 const addPrescription = require('../controller/addPrescription');
@@ -91,6 +102,8 @@ router.route("/updateCustomer").put(updateCustomer);
 router.route("/deleteCustomer/:id").delete(deleteCustomer);
 router.route("/removeAuthCustomer/:authId").delete(removeAuthCustomer); // not of use
 router.route("/getCustomerByEmail/:email").get(getCustomerByEmail);
+router.route("/updateCustomerProfile/:table").put(updateCustomerProfile);
+
 
 router.route("/addDoctor").post(addDoctor);
 router.route("/getDoctorByEmail/:email").get(getDoctorByEmail);
@@ -117,6 +130,11 @@ router.route("/getAllAnimals").get(getAllAnimals);
 router.route("/getAnimalById/:id").get(getAnimalById);
 router.route("/updateAnimal").put(updateAnimal);
 router.route("/deleteAnimal/:id").delete(deleteAnimal);
+router.route("/getAllAnimalsByType/:name").get(getAllAnimalsByType);
+router.route("/getAllAnimalsByFilter/:type/:filter").get(getAllAnimalsByFilter);
+router.route("/searchAnimalByName/:type/:name").get(searchAnimalByName);
+
+
 
 router.route("/getFoodByName/:name").get(getFoodByName);
 router.route("/addFood").post(addFood);
@@ -124,6 +142,10 @@ router.route("/getAllFoods").get(getAllFoods);
 router.route("/getFoodById/:id").get(getFoodById);
 router.route("/updateFood").put(updateFood);
 router.route("/deleteFood/:id").delete(deleteFood);
+router.route("/getAllFoodsByFilter/:filter").get(getAllFoodsByFilter);
+router.route("/searchFoodByName/:name").get(searchFoodByName);
+
+
 
 router.route("/getAssetByName/:name").get(getAssetByName);
 router.route("/addAsset").post(addAsset);
@@ -133,7 +155,8 @@ router.route("/updateAsset").put(updateAsset);
 router.route("/deleteAsset/:id").delete(deleteAsset);
 
 router.route("/getAssetsByIds").post(getAssetsByIds);
-
+router.route("/getAllAssetsByFilter/:filter").get(getAllAssetsByFilter);
+router.route("/searchAssetByName/:name").get(searchAssetByName);
 
 router.route("/getMedicineByName/:name").get(getMedicineByName);
 router.route("/addMedicine").post(addMedicine);
@@ -141,6 +164,10 @@ router.route("/getAllMedicines").get(getAllMedicines);
 router.route("/getMedicineById/:id").get(getMedicineById);
 router.route("/updateMedicine").put(updateMedicine);
 router.route("/deleteMedicine/:id").delete(deleteMedicine);
+router.route("/getAllMedicinesByFilter/:filter").get(getAllMedicinesByFilter);
+router.route("/searchMedicineByName/:name").get(searchMedicineByName);
+
+
 
 router.route("/getAllPrescriptions").get(getAllPrescriptions);
 router.route("/addPrescription").post(addPrescription);
