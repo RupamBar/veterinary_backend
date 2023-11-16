@@ -42,6 +42,7 @@ const deleteAnimal = require('../controller/deleteAnimal');
 const getAllAnimalsByType = require('../controller/getAllAnimalsByType');
 const getAllAnimalsByFilter = require('../controller/getAllAnimalsByFilter');
 const searchAnimalByName = require('../controller/searchAnimalByName');
+const getAnimalsByIDs = require('../controller/getAnimalsByIDs');
 // foods
 const getFoodByName = require('../controller/getFoodByName');
 const addFood = require('../controller/addFood');
@@ -51,6 +52,7 @@ const updateFood = require('../controller/updateFood');
 const deleteFood = require('../controller/deleteFood');
 const getAllFoodsByFilter = require('../controller/getAllFoodsByFilter');
 const searchFoodByName = require("../controller/searchFoodByName");
+const getFoodsByIDs = require('../controller/getFoodsByIDs');
 //assets
 const getAssetByName = require('../controller/getAssetByName');
 const addAsset = require('../controller/addAsset');
@@ -70,7 +72,7 @@ const updateMedicine = require('../controller/updateMedicine');
 const deleteMedicine = require('../controller/deleteMedicine');
 const getAllMedicinesByFilter = require('../controller/getAllMedicinesByFilter');
 const searchMedicineByName = require('../controller/searchMedicineByName');
-
+const getMedicinesByIDs = require('../controller/getMedicinesByIDs');
 // prescriptions
 const getAllPrescriptions = require('../controller/getAllPrescriptions');
 const addPrescription = require('../controller/addPrescription');
@@ -82,11 +84,21 @@ const deletePrescription = require('../controller/deletePrescription');
 //slots
 const getSlotsByDoctorId = require('../controller/getSlotsByDoctorId');
 const updateSlot = require('../controller/updateSlot');
+const addSlot = require('../controller/addSlot');
 const getAllPendingSlotsForGroom = require("../controller/getAllPendingSlotsForGroom");
 
 //groom table
 const createGroomEntry = require('../controller/createGroomEntry');
 const getGroomDataByEmpId = require('../controller/getGroomDataByEmpId');
+
+const buyProducts = require('../controller/buyProducts');
+
+const addReceipts = require('../controller/addReceipts');
+const addPets = require('../controller/addPets');
+const addSoldMedicines = require('../controller/addSoldMedicines');
+const addSoldAssets = require('../controller/addSoldAssets');
+
+const getAllPetsByCustomerId = require('../controller/getAllPetsByCustomerId');
 
 
 router.route("/signUp").post(signUp);
@@ -133,7 +145,7 @@ router.route("/deleteAnimal/:id").delete(deleteAnimal);
 router.route("/getAllAnimalsByType/:name").get(getAllAnimalsByType);
 router.route("/getAllAnimalsByFilter/:type/:filter").get(getAllAnimalsByFilter);
 router.route("/searchAnimalByName/:type/:name").get(searchAnimalByName);
-
+router.route("/getAnimalsByIDs").post(getAnimalsByIDs);
 
 
 router.route("/getFoodByName/:name").get(getFoodByName);
@@ -144,6 +156,7 @@ router.route("/updateFood").put(updateFood);
 router.route("/deleteFood/:id").delete(deleteFood);
 router.route("/getAllFoodsByFilter/:filter").get(getAllFoodsByFilter);
 router.route("/searchFoodByName/:name").get(searchFoodByName);
+router.route("/getFoodsByIDs").post(getFoodsByIDs);
 
 
 
@@ -166,7 +179,7 @@ router.route("/updateMedicine").put(updateMedicine);
 router.route("/deleteMedicine/:id").delete(deleteMedicine);
 router.route("/getAllMedicinesByFilter/:filter").get(getAllMedicinesByFilter);
 router.route("/searchMedicineByName/:name").get(searchMedicineByName);
-
+router.route("/getMedicinesByIDs").post(getMedicinesByIDs);
 
 
 router.route("/getAllPrescriptions").get(getAllPrescriptions);
@@ -178,13 +191,20 @@ router.route("/deletePrescription/:id").delete(deletePrescription);
 
 router.route("/getSlotsByDoctorId/:id").get(getSlotsByDoctorId);
 router.route("/updateSlot").put(updateSlot);
+router.route("/addSlot").post(addSlot);
 
 router.route("/getAllPendingSlotsForGroom").get(getAllPendingSlotsForGroom);
 
 router.route("/createGroomEntry").post(createGroomEntry);
 router.route("/getGroomDataByEmpId/:id").get(getGroomDataByEmpId);
 
+router.route("/buyProducts/:table").post(buyProducts);
 
+router.route("/addReceipts").post(addReceipts);
+router.route("/addPets").post(addPets);
+router.route("/addSoldMedicines").post(addSoldMedicines);
+router.route("/addSoldAssets").post(addSoldAssets);
 
+router.route("/getAllPetsByCustomerId/:id").get(getAllPetsByCustomerId);
 
 module.exports = router;

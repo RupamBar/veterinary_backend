@@ -15,7 +15,7 @@ const verifyEmployee = async (req, res) => {
       res.status(500).json({ message: error.message });
     } else {
       // console.log(data, "data>>>>>>>");
-      if(data[0].id.slice(0, 4) === userData.fourChars)
+      if(data[0].id.slice(0, 4) === userData.fourChars && data[0].name === userData.name)
       {
         res.status(200).json({ message: "Verified" });
       }
