@@ -97,8 +97,15 @@ const addReceipts = require('../controller/addReceipts');
 const addPets = require('../controller/addPets');
 const addSoldMedicines = require('../controller/addSoldMedicines');
 const addSoldAssets = require('../controller/addSoldAssets');
+const getAllSoldAssets = require('../controller/getAllSoldAssets');
+const getAllSoldMedicines = require('../controller/getAllSoldMedicines');
 
 const getAllPetsByCustomerId = require('../controller/getAllPetsByCustomerId');
+const getAllPets = require('../controller/getAllPets');
+
+const getAllGroomings = require('../controller/getAllGroomings');
+const getAllReceipts = require('../controller/getAllReceipts');
+const getAllSlots = require('../controller/getAllSlots');
 
 
 router.route("/signUp").post(signUp);
@@ -180,6 +187,7 @@ router.route("/deleteMedicine/:id").delete(deleteMedicine);
 router.route("/getAllMedicinesByFilter/:filter").get(getAllMedicinesByFilter);
 router.route("/searchMedicineByName/:name").get(searchMedicineByName);
 router.route("/getMedicinesByIDs").post(getMedicinesByIDs);
+router.route("/getAllSoldMedicines").get(getAllSoldMedicines);
 
 
 router.route("/getAllPrescriptions").get(getAllPrescriptions);
@@ -197,6 +205,10 @@ router.route("/getAllPendingSlotsForGroom").get(getAllPendingSlotsForGroom);
 
 router.route("/createGroomEntry").post(createGroomEntry);
 router.route("/getGroomDataByEmpId/:id").get(getGroomDataByEmpId);
+router.route("/getAllGroomings").get(getAllGroomings);
+
+router.route("/getAllReceipts").get(getAllReceipts);
+router.route("/getAllSlots").get(getAllSlots);
 
 router.route("/buyProducts/:table").post(buyProducts);
 
@@ -204,7 +216,9 @@ router.route("/addReceipts").post(addReceipts);
 router.route("/addPets").post(addPets);
 router.route("/addSoldMedicines").post(addSoldMedicines);
 router.route("/addSoldAssets").post(addSoldAssets);
+router.route("/getAllSoldAssets").get(getAllSoldAssets);
 
 router.route("/getAllPetsByCustomerId/:id").get(getAllPetsByCustomerId);
+router.route("/getAllPets").get(getAllPets);
 
 module.exports = router;

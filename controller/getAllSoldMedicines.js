@@ -1,16 +1,13 @@
 const supabase = require("../supabase/supabaseConfig.js");
 
-const getAssetsByIds = async (req, res) => {
+const getAllSoldMedicines = async (req, res) => {
   try {
-    const id = req.params.id;
     const userData = req.body;
 
     let { data, error } = await supabase
-      .from("assets")
-      .select("*")
-
-      // Filters
-      .in('id', [...userData])
+      .from("sold_medicines")
+      .select('*, customers(*), medicines(*)')
+      ;
 
     if (error) {
       res.status(500).json({ message: error.message });
@@ -22,4 +19,4 @@ const getAssetsByIds = async (req, res) => {
   }
 };
 
-module.exports = getAssetsByIds;
+module.exports = getAllSoldMedicines;
